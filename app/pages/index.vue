@@ -4,6 +4,16 @@
 
 <template>
     <div>
-        <h1>Welcome to the Home Page</h1>
+        <header>
+            <!-- Header de la landing -->
+        </header>
+    
+        <main>
+        <!-- Contenido de la landing -->
+        </main>
+    
+        <footer>
+        <!-- Footer de la landing -->
+        </footer>
     </div>
 </template>
