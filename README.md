@@ -239,28 +239,84 @@ uvicorn main:app --reload
 
 > **This section is for my reference** when starting future Nuxt projects.
 
-### 1. Initial Setup
+### 1. Create GitHub Repository First
+1. Go to [GitHub](https://github.com/new)
+2. Create new repository with a name (e.g., `my-nuxt-project`)
+3. Don't add README, .gitignore, or license yet (Nuxt will create them)
+4. Copy the repository URL
+
+### 2. Clone and Install Nuxt
 ```bash
-# Create new Nuxt project
-npx nuxi@latest init project-name
-cd project-name
-npm install
+# Clone the empty repository (using SSH)
+git clone git@github.com:your-username/my-nuxt-project.git
+cd my-nuxt-project
+
+# Install Nuxt in current directory
+npm create nuxt@latest .
+# Select: Yes to initialize git, select package manager, and minimal recommended
+
+### 3. Setup app.vue
+Replace the content of `app/app.vue` with:
+```vue
+<template>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+</template>
 ```
 
-### 2. Core Structure
-Create these folders in the root:
+### 4. Create pages Folder and Home Page
+```bash
+# Create pages folder
+mkdir pages
+
+# Create index.vue (or create manually)
 ```
-pages/          # File-based routing
-layouts/        # Reusable page layouts
+
+Add to `pages/index.vue`:
+```vue
+<template>
+  <div>
+    <h1>Welcome to the Home Page</h1>
+  </div>
+</template>
+```
+
+### 5. Create layouts Folder
+```bash
+# Create layouts folder (empty for now)
+mkdir layouts
+```
+
+You'll add layout files later as needed (e.g., `default.vue`, `dashboard.vue`).
+
+### 6. Test the Setup
+```bash
+npm run dev
+```
+Visit `http://localhost:3000` - you should see "Welcome to the Home Page"
+
+### 7. First Commit
+```bash
+git add .
+git commit -m "feat: initial Nuxt setup with basic routing"
+git push origin main
+```
+
+### 8. Core Structure (Add as Needed)
+Create these folders progressively as your project grows:
+```
+pages/          # ✅ Already created - File-based routing
+layouts/        # ✅ Already created - Reusable page layouts
 components/     # Vue components
 composables/    # Composition API utilities
 middleware/     # Route middleware
 plugins/        # Vue plugins
 assets/         # Styles, images
-public/         # Static files
+public/         # Static files (already exists)
 ```
 
-### 3. Setup app.vue
+### 9. Create Layouts
 ```vue
 <template>
   <NuxtLayout>
@@ -279,9 +335,8 @@ pages/
     simulation.vue       → /dashboard/simulation
 ```
 
-### 5. Create Layouts
+Create `layouts/default.vue`:
 ```vue
-<!-- layouts/default.vue -->
 <template>
   <div>
     <header>Navigation</header>
@@ -291,21 +346,20 @@ pages/
 </template>
 ```
 
-### 6. Use Layout in Pages
 ```vue
 <script setup>
 definePageMeta({ layout: 'dashboard' })
 </script>
 ```
 
-### 7. Install Additional Packages
+### 11. Install Additional Packages
 ```bash
 npm install @nuxt/ui          # UI components
 npm install @pinia/nuxt       # State management
 npm install @supabase/supabase-js  # Backend
 ```
 
-### 8. Configure nuxt.config.ts
+### 12pescript
 ```typescript
 export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@pinia/nuxt'],
@@ -318,14 +372,7 @@ export default defineNuxtConfig({
 })
 ```
 
-### 9. Run Development Server
-```bash
-npm run dev
-```
-
-### 10. Build for Production
-```bash
-npm run build
+### 13n build
 npm run preview
 ```
 
