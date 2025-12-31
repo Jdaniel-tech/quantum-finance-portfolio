@@ -13,5 +13,10 @@
     "nuxt": "^4.2.2",
     "vue": "^3.5.26",
     "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@nuxt/test-utils": "^3.21.0",
+    "@vue/test-utils": "^2.4.6",
+    "vitest": "^3.2.4"
   }
 }
